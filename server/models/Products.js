@@ -5,21 +5,8 @@ var productsSchema = new Schema(
     {
         name: String,
         catagory: String,
-        subcategory: {
-            type: String,
-            model: {
-                type: String,
-                colour: {
-                    name: String,
-                    image: String
-                },
-                size: {
-                    val: Number,
-                    price: Number
-                }
-            }
-        },
         description: String,
+        price: String,
         created_at: { type: Date},
         updated_at: { type: Date, default: Date.now },
         updated: { type: Date, default: Date.now}
