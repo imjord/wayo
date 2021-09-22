@@ -1,5 +1,6 @@
 import React from 'react';
 
+
 function App() {
   return (
     <div className="App">
@@ -16,6 +17,23 @@ function App() {
         >
           Learn React
         </a>
+        <div class="lists">
+  <ul class="nes-list is-disc">
+    <li>Good morning.</li>
+    <li>Thou hast had a good night's sleep, I hope.</li>
+    <li>Thou hast had a good afternoon</li>
+    <li>Good night.</li>
+  </ul>
+</div>
+
+<div class="lists">
+  <ul class="nes-list is-circle">
+    <li>Good morning.</li>
+    <li>Thou hast had a good night's sleep, I hope.</li>
+    <li>Thou hast had a good afternoon</li>
+    <li>Good night.</li>
+  </ul>
+</div>
       </header>
     </div>
   );
