@@ -25,7 +25,5 @@
     "concurrently": "^5.1.0"
   },
   "homepage": "https://github.com/imjord/wayo-clothing-brand-.01#readme",
-  "dependencies": {
-  
-  }
+  "dependencies": {}
 }
