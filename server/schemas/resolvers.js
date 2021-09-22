@@ -1,5 +1,8 @@
 const { User, Products } = require('../models');
+const { signToken } = require('../utils/auth');
 
+// if theres a login dup boi 
+const { AuthenticationError } = require('apollo-server-express');
 
 
 const resolvers = {
@@ -25,9 +28,25 @@ const resolvers = {
     Mutation: {
         addUser: async (parent, args) => {
             const user = await User.create(args);
-            return { user };
+            const token = signToken(user);
+            return { user, token };
         },
-        addProduct: async (parent, args) => {
+        login: async (parent, { email, password}) => {
+            const user = await User.findOne({email});
+
+            if(!user) {
+                throw new AuthenticationError('incorrect credentials ')
+            }
+            const correctPass = await user.isCorrectPassword(password);
+
+            if(!correctPass){
+                throw new AuthenticationError('incorrect credentials ')
+            }
+            const token = signToken(user);
+            return { token, user};
+        },
+
+            addProduct: async (parent, args) => {
             const product = await Products.create(args);
             return {product};
         }

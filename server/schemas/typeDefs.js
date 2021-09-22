@@ -34,8 +34,8 @@ type Category {
     productlist: [Product]
 }
 type Mutation {
-    login(email: String!, password: String!): User
-    addUser(username: String!, email: String!, password: String!): User
+    login(email: String!, password: String!): Auth
+    addUser(username: String!, email: String!, password: String!): Auth
     addProduct(name: String!, description: String!, category: String!, itemimage: String!, price: Int!): Product
     placeOrder(_id: ID!): Order
     
