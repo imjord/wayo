@@ -1,6 +1,6 @@
 import React from 'react';
 
-function CartDetail() {
+const CartDetail = () => {
     return(
         <div>
             this will be your checkout cart details mang!

@@ -26,7 +26,7 @@ function Nav() {
     <>
       <Link to="/Login">Login</Link>
       <Link to="/signup">Signup</Link>
-      <Link to="cart">Your cart</Link>
+      <Link to="/cart">Your cart</Link>
     </>
   )}
     </nav>
