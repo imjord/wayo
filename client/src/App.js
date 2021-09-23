@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { ApolloProvider, ApolloClient, InMemoryCache, createHttpLink} from '@apollo/client';
-
+import SignUp from './pages/Signup';
 
 function App() {
 const httpLink = createHttpLink({
@@ -18,6 +18,7 @@ const client = new ApolloClient({
     <ApolloProvider client={client}>
       <Router>
       <div>
+        <SignUp> </SignUp>
       <Switch>
         
           </Switch>
