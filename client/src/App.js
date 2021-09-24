@@ -7,6 +7,7 @@ import Login from './pages/Login'
 import NoPage from './pages/NoPage';
 import CartDetail from './pages/CartDetail';
 import Nav from './components/Nav';
+import Footer from './components/Footer';
 
 
 
@@ -29,15 +30,14 @@ const client = new ApolloClient({
       <Router>
       <div>
         <Nav />
-      <Switch>
-      <Route exact path="/" component={Home} />
-      <Route exact path="/signup" component={SignUp} />
-      <Route exact path="Login" component={Login} />
-      <Route exact path="cart" component={CartDetail} />
-      {/* <Route component={NoPage} /> */}
-
-        
-          </Switch>
+        <Switch>
+          <Route exact path="/" component={Home} />
+          <Route exact path="/signup" component={SignUp} />
+          <Route exact path="/login" component={Login} />
+          <Route exact path="/cart" component={CartDetail} />
+          {/* <Route component={NoPage} /> */}
+        </Switch>
+        <Footer />
       </div>
       </Router>
     </ApolloProvider>
