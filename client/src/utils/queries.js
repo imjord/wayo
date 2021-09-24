@@ -8,4 +8,29 @@ query user($username: String!) {
         username
         email
     }
-} `
+} `;
+
+
+export const QUERY_ME = gql `
+{
+    me{
+        _id
+        username
+        email
+        items{
+            _id
+            name
+            price
+            description
+            itemimage
+        }
+        orderdetails{
+            _id
+            purchasedby {
+                _id
+                username
+            }
+        }
+
+    }
+}` 
