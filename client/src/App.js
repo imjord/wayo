@@ -32,9 +32,9 @@ const client = new ApolloClient({
       <Switch>
       <Route exact path="/" component={Home} />
       <Route exact path="/signup" component={SignUp} />
-      <Route exact path="Login" component={Login} />
-      <Route exact path="cart" component={CartDetail} />
-      {/* <Route component={NoPage} /> */}
+      <Route exact path="/Login" component={Login} />
+      <Route exact path="/cart" component={CartDetail} />
+      <Route component={NoPage} />
 
         
           </Switch>
