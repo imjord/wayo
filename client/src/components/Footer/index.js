@@ -7,22 +7,22 @@ function Footer() {
                 <div>
                     <h5 className="footTitle">Our Company</h5>
                     <ul>
-                        <li>About Wayo</li>
-                        <li>Careers</li>
-                        <li>Legal</li>
-                        <li>Privacy & Cookies</li>
-                        <li>Corporate Info</li>
+                        <a href="About" target="_blank" rel="noreferrer"><li>About Wayo</li></a>
+                        <a href="Careers" target="_blank" rel="noreferrer"><li>Careers</li></a>
+                        <a href="Legal" target="_blank" rel="noreferrer"><li>Legal</li></a>
+                        <a href="Privacy" target="_blank" rel="noreferrer"><li>Privacy & Cookies</li></a>
+                        <a href="Corporate" target="_blank" rel="noreferrer"><li>Corporate Info</li></a>
                     </ul>
                 </div>
                 <div>
                     <h5 className="footTitle">Find Us On</h5>
                     <ul>
-                        <li>Github</li>
-                        <li>Discord</li>
-                        <li>Facebook</li>
-                        <li>Twitter</li>
-                        <li>Instagram</li>
-                        <li>YouTube</li>
+                        <a href="https://github.com/imjord/wayo-clothing-brand-.01" target="_blank" rel="noreferrer"><li>Github</li></a>
+                        <a href="https://discord.com/" target="_blank" rel="noreferrer"><li>Discord</li></a>
+                        <a href="https://facebook.com/" target="_blank" rel="noreferrer"><li>Facebook</li></a>
+                        <a href="https://twitter.com/" target="_blank" rel="noreferrer"><li>Twitter</li></a>
+                        <a href="https://instagram.com/" target="_blank" rel="noreferrer"><li>Instagram</li></a>
+                        <a href="https://youtube.com/" target="_blank" rel="noreferrer"><li>YouTube</li></a>
                     </ul>
                 </div>
                 <div>
