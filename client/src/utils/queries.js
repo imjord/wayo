@@ -10,7 +10,7 @@ query user($username: String!) {
     }
 } `;
 
-
+// querys for when logged in will be used on products page to show orders.
 export const QUERY_ME = gql `
 {
     me{
@@ -33,4 +33,38 @@ export const QUERY_ME = gql `
         }
 
     }
-}` 
+}` ;
+
+
+export const QUERY_ALL_PRODCUTS = gql `
+{
+    products {
+        _id
+        name
+        description
+        price
+        itemimage
+        category{
+            _id
+            name
+        }
+    }
+}`;
+
+
+export const QUERY_PRODUCTS = gql `
+query getProduct($category: ID){
+    products(category: $category){
+        _id
+        name
+        description
+        price
+        itemimage
+        category{
+            _id
+            name
+        }
+    }
+}`;
+
+
