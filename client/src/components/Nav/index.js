@@ -17,7 +17,7 @@ function Nav() {
         <nav className="text-center">
   {Auth.loggedIn() ? (
     <>
-      <Link to="/profile">Me</Link>
+      <Link to="/cart">Your cart</Link>
       <a href="/" onClick={logout}>
         Logout
       </a>
@@ -26,7 +26,7 @@ function Nav() {
     <>
       <Link to="/login">Login</Link>
       <Link to="/signup">Signup</Link>
-      <Link to="/cart">Your cart</Link>
+      
     </>
   )}
     </nav>
