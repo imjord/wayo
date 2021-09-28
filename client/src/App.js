@@ -9,6 +9,7 @@ import CartDetail from './pages/CartDetail';
 import Nav from './components/Nav';
 import Footer from './components/Footer';
 import Products from './pages/Products';
+import { StoreProvider } from './utils/GlobalState';
 
 
 
@@ -30,16 +31,18 @@ const client = new ApolloClient({
     <ApolloProvider client={client}>
       <Router>
       <div>
-        <Nav />
-        <Switch>
-          <Route exact path="/" component={Home} />
-          <Route exact path="/signup" component={SignUp} />
-          <Route exact path="/login" component={Login} />
-          <Route exact path="/cart" component={CartDetail} />
-          <Route exact path="/products" component={Products} />
-          <Route component={NoPage} />
-        </Switch>
-        <Footer />
+        <StoreProvider>
+          <Nav />
+          <Switch>
+            <Route exact path="/" component={Home} />
+            <Route exact path="/signup" component={SignUp} />
+            <Route exact path="/login" component={Login} />
+            <Route exact path="/cart" component={CartDetail} />
+            <Route exact path="/products" component={Products} />
+            <Route component={NoPage} />
+          </Switch>
+          <Footer />
+        </StoreProvider>
       </div>
       </Router>
     </ApolloProvider>

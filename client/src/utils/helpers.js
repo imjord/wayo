@@ -1,10 +1,12 @@
+// pluralize helper
 export function pluralize(name, count) {
     if (count === 1) {
       return name;
     }
     return name + 's';
 }
-  
+
+
 export function idbPromise(storeName, method, object) {
     return new Promise((resolve, reject) => {
         const request = window.indexedDB.open('wayo', 1);
@@ -45,11 +47,11 @@ export function idbPromise(storeName, method, object) {
                     break;
                 default:
                     console.log('No valid method');
-                break;
+                    break;
             }
   
             tx.oncomplete = function() {
-            db.close();
+                db.close();
             };
         };
     });

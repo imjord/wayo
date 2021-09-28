@@ -42,7 +42,7 @@ export const QUERY_PRODUCTS = gql `
             name
             price
             description
-            itemimage
+            image
         }
     }
 `
