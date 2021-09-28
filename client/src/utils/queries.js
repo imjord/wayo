@@ -34,3 +34,15 @@ export const QUERY_ME = gql `
 
     }
 }` 
+
+export const QUERY_PRODUCTS = gql `
+    {
+        products {
+            _id
+            name
+            price
+            description
+            itemimage
+        }
+    }
+`

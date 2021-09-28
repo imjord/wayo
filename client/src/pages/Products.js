@@ -1,13 +1,9 @@
 import React from 'react';
+import ProductList from '../components/ProductList';
+import Cart from "../components/Cart";
 
 const Products = () => {
-    return (
-        <div>
-            <card></card>
-            <card></card>
-            <card></card>
-        </div>
-    )
-}
+   
+};
 
 export default Products;

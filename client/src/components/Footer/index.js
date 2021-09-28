@@ -1,22 +1,49 @@
 import React from 'react';
+import { makeStyles, createStyles, Grid } from '@material-ui/core'
+import { work } from '@material-ui/icons';
+
+import "./Footer.css";
+
+const useStyles = makeStyles((theme) => 
+    createStyles({
+        gridContainer: {
+
+        }
+
+    })
+);
+
+
 
 function Footer() {
+    const classes = useStyles();
     return (
-        <div>
-            <div>  
-                <div>
+        <div className="footerBg">
+            <Grid
+                container
+                direction="row"
+                justifyContent="space-evenly"
+                className={classes.gridContainer}
+            >  
+                <Grid
+                    container
+                    direction="column"
+                >
                     <h5 className="footTitle">Our Company</h5>
-                    <ul>
+                    <ul className="footList">
                         <a href="About" target="_blank" rel="noreferrer"><li>About Wayo</li></a>
                         <a href="Careers" target="_blank" rel="noreferrer"><li>Careers</li></a>
                         <a href="Legal" target="_blank" rel="noreferrer"><li>Legal</li></a>
                         <a href="Privacy" target="_blank" rel="noreferrer"><li>Privacy & Cookies</li></a>
                         <a href="Corporate" target="_blank" rel="noreferrer"><li>Corporate Info</li></a>
                     </ul>
-                </div>
-                <div>
+                </Grid>
+                <Grid
+                    container
+                    direction="column"
+                >
                     <h5 className="footTitle">Find Us On</h5>
-                    <ul>
+                    <ul className="footList">
                         <a href="https://github.com/imjord/wayo-clothing-brand-.01" target="_blank" rel="noreferrer"><li>Github</li></a>
                         <a href="https://discord.com/" target="_blank" rel="noreferrer"><li>Discord</li></a>
                         <a href="https://facebook.com/" target="_blank" rel="noreferrer"><li>Facebook</li></a>
@@ -24,10 +51,13 @@ function Footer() {
                         <a href="https://instagram.com/" target="_blank" rel="noreferrer"><li>Instagram</li></a>
                         <a href="https://youtube.com/" target="_blank" rel="noreferrer"><li>YouTube</li></a>
                     </ul>
-                </div>
-                <div>
+                </Grid>
+                <Grid
+                    container
+                    direction="column"
+                >
                     <h5 className="footTitle">Sign up for Wayo Updates</h5>
-                    <p>By entering your email address below, you consent to receiving our 
+                    <p className="footPara">By entering your email address below, you consent to receiving our 
                         newsletter with access to our latest collections, events and initiatives. 
                         More details on this are provided in our Privacy Policy
                     </p>
@@ -43,10 +73,10 @@ function Footer() {
                             Submit
                         </button>
                     </form>
-                </div>
-            </div>
+                </Grid>
+            </Grid>
             <div>
-                <h6>© 2021 Wayo Clothing Brand LLC. All rights reserved.</h6>
+                <h6 className="rights">© 2021 Wayo Clothing Brand LLC. All rights reserved.</h6>
             </div>
         </div> 
     );

@@ -1,22 +1,13 @@
 import React from 'react';
-import Placeholder from '../assets/PlaceholderImg.jpg';
+import Landing from '../components/Landing';
+
 
 const Home = () => {
     return (
-        <div>
-            <div>
-                <img src={Placeholder} alt="Friends hanging out" >
-                </img>
-            </div>
-            <div>
-                <img src={Placeholder} alt="Friends hanging out" >
-                </img>
-                <img src={Placeholder} alt="Friends hanging out" >
-                </img>
-            </div>
+        <div className="container">
+            <Landing />
         </div>
-    )
-    
-}
+    );
+};
 
 export default Home;
