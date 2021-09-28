@@ -45,4 +45,12 @@ export const QUERY_PRODUCTS = gql `
             image
         }
     }
-`
+`;
+
+export const QUERY_CHECKOUT = gql `
+    query Checkout($products:[ID]!) {
+        checkout(products: $products) {
+            session
+        }
+    }
+`;
