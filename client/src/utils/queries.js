@@ -33,38 +33,16 @@ export const QUERY_ME = gql `
         }
 
     }
-}` ;
-
-
-export const QUERY_ALL_PRODCUTS = gql `
-{
-    products {
-        _id
-        name
-        description
-        price
-        itemimage
-        category{
-            _id
-            name
-        }
-    }
-}`;
-
+}` 
 
 export const QUERY_PRODUCTS = gql `
-query getProduct($category: ID){
-    products(category: $category){
-        _id
-        name
-        description
-        price
-        itemimage
-        category{
+    {
+        products {
             _id
             name
+            price
+            description
+            image
         }
     }
-}`;
-
-
+`

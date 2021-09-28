@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useMutation } from '@apollo/client';
 import { LOGIN_USER } from '../utils/mutations';
 import Auth from '../utils/auth';
+import { Link } from 'react-router-dom';
 
 
 
@@ -69,6 +70,7 @@ function Login(propboi) {
                 <button className='btn d-block w-100' type='submit'>
                   Submit
                 </button>
+                <Link to="/signup">Not a member? Signup!</Link>
               </form>
               {error && <div className="nes-text is-error">Login failed</div>}
   

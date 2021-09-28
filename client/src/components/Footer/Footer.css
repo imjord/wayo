@@ -1,0 +1,34 @@
+
+
+.nes-input {
+    width: calc(20% - 8px)
+}
+
+.footerBg {
+    background-color: rgba(24, 22, 22, 0.133)
+}
+
+.footTitle {
+    font-family: 'Karla', sans-serif;
+}
+
+a {
+    text-decoration: none;
+    color: #353535;
+}
+
+.footList {
+    text-decoration: none;
+    list-style: none;
+    padding-left: 0px;
+}
+
+.rights {
+    margin-top: 3%;
+}
+
+@media screen and (max-width: 768px) {
+    .nes-input {
+        width: calc(40% - 8px)
+    }
+  }

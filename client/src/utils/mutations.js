@@ -24,19 +24,3 @@ export const ADD_USER = gql `mutation addUser($username: String!, $email: String
         }
     }
 }`;
-
-// mutation to place an order the mutation will use the placeorder and grab products type ID
-export const PLACE_ORDER = gql `mutation placeOrder($products: [ID]!){
-    placeOrder(products: $products){
-        purchasedBy
-        products {
-            _id
-            name
-            description
-            price
-            category{
-                name
-            }
-        }
-    }
-}`
