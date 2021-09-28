@@ -24,12 +24,15 @@ function Nav() {
         <nav className="text-center">
   {Auth.loggedIn() ? (
     <>
+
         <Link to="/profile">Me</Link>
+
       <a href="/" onClick={logout}>
         Logout
       </a>
     </>
   ) : (
+
     <div>
         <div className="pageBtns">
             <Link to="/products" className="cartBtn">Shop Now</Link>
@@ -37,6 +40,7 @@ function Nav() {
             <Link to="/cart" className="cartBtn">ShopIcon</Link>
         </div>
     </div>
+
   )}
     </nav>
       </div>

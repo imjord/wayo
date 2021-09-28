@@ -31,13 +31,13 @@ type User{
 type Category {
     _id: ID
     name: String!
-    productlist: [Product]
+  
 }
 type Mutation {
     login(email: String!, password: String!): Auth
     addUser(username: String!, email: String!, password: String!): Auth
     addProduct(name: String!, description: String!, category: String!, itemimage: String!, price: Int!): Product
-    placeOrder(_id: ID!): Order
+    placeOrder(products: [ID]!): Order
     
 
 }
@@ -58,6 +58,7 @@ type Product {
 }
 type Order {
     _id: ID
+    products: [Product]
     purchasedby: User!
     
 }

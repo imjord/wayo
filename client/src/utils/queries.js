@@ -10,7 +10,7 @@ query user($username: String!) {
     }
 } `;
 
-
+// querys for when logged in will be used on products page to show orders.
 export const QUERY_ME = gql `
 {
     me{
