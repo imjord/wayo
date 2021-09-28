@@ -17,14 +17,14 @@ db.once('open', async () => {
         {
             name: 'Wayo Tshirt',
             description: 'A flashy wayo tshirt. Very Rare and limited edition.',
-            category: Categories[0]._id,
+            category: myCategories[0]._id,
             price: 15.99,
-            image: 'BLAHBALH'
+            image: 'BLAHBALH.png'
         },
         {
             name: 'Wayo Hoodie',
             description: 'A totally cool hoodie to keep you fresh and warm. Limited Edition',
-            category: Categories[1]._id,
+            category: myCategories[1]._id,
             price: 25.99,
             image: 'HOODIE.PNG'
         }    
