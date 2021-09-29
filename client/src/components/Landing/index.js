@@ -5,14 +5,14 @@ import './Landing.css';
 function Landing() {
     return (
         <div>
-            <div>
-                <img src={Placeholder} alt="Friends hanging out" className="first" >
+            <div className="landingContainer">
+                <img src={Placeholder} alt="Friends hanging out" className="firstImg" >
                 </img>
             </div>
-            <div>
-                <img src={Placeholder} alt="Friends hanging out" >
+            <div className="secondContainer">
+                <img src={Placeholder} alt="Friends hanging out" className="secondImg">
                 </img>
-                <img src={Placeholder} alt="Friends hanging out" >
+                <img src={Placeholder} alt="Friends hanging out" className="thirdImg">
                 </img>
             </div>
         </div>

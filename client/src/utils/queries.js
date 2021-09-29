@@ -22,7 +22,7 @@ export const QUERY_ME = gql `
             name
             price
             description
-            itemimage
+            image
         }
         orderdetails{
             _id
@@ -34,6 +34,18 @@ export const QUERY_ME = gql `
 
     }
 }` 
+
+export const QUERY_ALL_PRODUCTS = gql `
+    {
+        products {
+            _id
+            name
+            description
+            price
+            quantity
+        }
+    }
+`
 
 export const QUERY_PRODUCTS = gql `
     {

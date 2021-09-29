@@ -14,15 +14,15 @@ const resolvers = {
         // get a single user by username
         user: async (parent, { username }) => {
             return User.findOne({ username })
+        },
+        // get all products 
+        products: async () => {
+            return Products.find();
+        },
+        // get a product by its title
+        product: async (parent, { title }) => {
+            return Products.findOne({ title })
         }
-        // // get all products 
-        // products: async () => {
-        //     return Products.find();
-        // },
-        // // get a product by its title
-        // product: async (parent, { title }) => {
-        //     return Products.findOne({ title })
-        // }
         
     },
     Mutation: {

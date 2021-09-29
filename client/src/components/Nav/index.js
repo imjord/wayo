@@ -25,11 +25,15 @@ function Nav() {
   {Auth.loggedIn() ? (
     <>
 
-        <Link to="/profile">Me</Link>
+        {/* <Link to="/profile">Me</Link> */}
 
-      <a href="/" onClick={logout}>
-        Logout
-      </a>
+        <div className="pageBtns">
+            <Link to="/products" className="cartBtn">Shop Now</Link>
+            <a href="/" onClick={logout} className="logoutBtn">
+            Logout
+            </a>
+            <Link to="/cart" className="cartBtn">ShopIcon</Link>
+        </div>
     </>
   ) : (
 

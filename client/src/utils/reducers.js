@@ -19,6 +19,17 @@ export const reducer = (state, action) => {
                 ...state,
                 product: [action.product],
             };
+        case UPDATE_CART_QUANTITY:
+            return {
+                ...state,
+                cartOpen:true,
+                cart: state.cart.map(product => {
+                    if (action._id === product._id) {
+                        product.purchaseQuantity = action.purchaseQuantity
+                    }
+                    return product;
+                })
+            }
         case ADD_TO_CART:
             return {
                 ...state,
@@ -33,7 +44,7 @@ export const reducer = (state, action) => {
                     if (action._id === product._id) {
                         product.purchaseQuantity = action.purchaseQuantity
                     }
-                    return product
+                    return product;
                 })
             };
         // remove products from cart
