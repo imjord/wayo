@@ -2,9 +2,26 @@ import React, {useState} from 'react';
 import { useMutation } from '@apollo/client';
 import { ADD_USER } from '../utils/mutations';
 import Auth from '../utils/auth';
+import { Button, makeStyles, createStyles } from '@material-ui/core';
 
+import './AllPages.css';
+
+const useStyles = makeStyles((theme) => 
+  createStyles({
+    submitBtn: {
+      alignContent:"center",
+      justifyContent: 'center',
+      width: '50%',
+      marginLeft: '10%',
+      marginTop: '10px',
+      padding: '4'
+    }
+
+  }))
 
 function SignUp() {
+
+const classes = useStyles();
 const [formState, setFormState] = useState({ username: '', email: '', password: ''});
 
 // update the state based on form input changes 
@@ -35,13 +52,13 @@ const updateFormSubmit = async event => {
 };
 return(
     <main className='flex-row justify-center mb-4'>
-      <div className='col-12 col-md-6'>
-        <div className='card'>
+      <div>
+        <div className='login-card'>
           <h4 className='card-header nes-text is-primary'>Sign Up</h4>
-          <div className='card-body'>
+          <div className='login-page'>
             <form onSubmit={updateFormSubmit}>
               <input
-                className='nes-input'
+                className='form-input'
                 placeholder='Your username'
                 name='username'
                 type='username'
@@ -50,7 +67,7 @@ return(
                 onChange={updateChange}
               />
               <input
-                className='nes-input'
+                className='form-input'
                 placeholder='Your email'
                 name='email'
                 type='email'
@@ -59,7 +76,7 @@ return(
                 onChange={updateChange}
               />
               <input
-                className='nes-input'
+                className='form-input'
                 placeholder='******'
                 name='password'
                 type='password'
@@ -67,9 +84,13 @@ return(
                 value={formState.password}
                 onChange={updateChange}
               />
-              <button className='nes-btn is-primary' type='submit'>
-                Submit
-              </button>
+                <Button 
+                  type='submit'
+                  variant="outlined"
+                  className={classes.submitBtn}
+                >
+                  Enter
+                </Button>
             </form>
             {error && <div className="nes-text is-error">Sign up failed</div>}
           </div>

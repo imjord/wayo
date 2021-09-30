@@ -7,6 +7,8 @@ import { idbPromise } from "../../utils/helpers";
 import { useQuery } from '@apollo/react-hooks';
 import giphy from '../../assets/giphy.gif';
 
+import './ProductList.css';
+
 
 function ProductList() {
     const [state, dispatch] = useStoreContext();
@@ -43,7 +45,7 @@ function ProductList() {
 
     return (
         <div className="my-2">
-        <h2>Our Products:</h2>
+        <h2 className="shopTitle">Products:</h2>
         {state.products.length ? (
             <div className="flex-row">
                 {filterProducts().map(product => (
@@ -57,7 +59,7 @@ function ProductList() {
                 ))}
             </div>
         ) : (
-            <h3>You haven't added any products yet!</h3>
+            <h3 className="emptyPage">Hmmm Looks a bit empty in here.</h3>
         )}
         { loading ? 
         <img src={giphy} alt="loading" />: null}
