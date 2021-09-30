@@ -1,0 +1,49 @@
+.landingContainer{
+    overflow:hidden;
+    display: flex;
+    width: 100%;
+    height: 300px;
+    margin-bottom: 1vh;
+} 
+
+.firstImg {
+    height: 55vh;
+    width: 100%;
+    object-fit: cover;
+}
+
+.secondContainer {
+    overflow: hidden;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
+.secondImg {
+    display: flex;
+    width: 50%;
+    height: 50vh;
+    padding-right: 4px;
+    padding-bottom: 2px;
+    margin-bottom: 1vh;
+}
+
+.thirdImg {
+    display: flex;
+    width: 50%;
+    height: 45vh;
+}
+
+@media only screen and (max-width: 900px) {
+    .secondImg {
+        width: 100%;
+        height: 35vh;
+        object-fit: cover;
+    }
+    
+    .thirdImg {
+        width: 0%;
+        height: 0vh;
+        visibility: hidden;
+    }
+  }
