@@ -29,6 +29,7 @@ db.once('open', async () => {
             category: myCategories[1]._id,
             price: 25.99,
             image: 'HOODIE.PNG'
+
         },  
         {
             name: 'Wayo Leggings',
@@ -89,6 +90,7 @@ db.once('open', async () => {
     
     ]);
     console.log('products doine')
+
 
     process.exit();
 

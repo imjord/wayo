@@ -13,9 +13,6 @@ import { StoreProvider } from './utils/GlobalState';
 
 
 
-
-
-
 function App() {
 const httpLink = createHttpLink({
   uri: '/graphql',

@@ -1,13 +1,18 @@
 import React from 'react';
 import { makeStyles, createStyles, Grid } from '@material-ui/core'
 import { work } from '@material-ui/icons';
+import indigo from '@material-ui/core/colors/indigo';
 
 import "./Footer.css";
 
 const useStyles = makeStyles((theme) => 
     createStyles({
         gridContainer: {
+            margin: 'auto'
+        },
 
+        gridEl: {
+            justifyContent: 'left'
         }
 
     })
@@ -28,6 +33,8 @@ function Footer() {
                 <Grid
                     container
                     direction="column"
+                    item xs={6} sm={6} md={4} lg={6} xl={6}
+                    className={classes.gridEl}
                 >
                     <h5 className="footTitle">Our Company</h5>
                     <ul className="footList">
@@ -41,6 +48,7 @@ function Footer() {
                 <Grid
                     container
                     direction="column"
+                    item xs={6} sm={6} md={6} lg={6} xl={6}
                 >
                     <h5 className="footTitle">Find Us On</h5>
                     <ul className="footList">

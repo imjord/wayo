@@ -13,7 +13,7 @@ type Query {
     user(username: String!): User
     products: [Product]
     getCategory: [Category]
-    userOrders: User
+    product(_id: ID!): Product
 
 
 }
@@ -31,12 +31,12 @@ type User{
 type Category {
     _id: ID
     name: String!
-  
 }
+
 type Mutation {
     login(email: String!, password: String!): Auth
     addUser(username: String!, email: String!, password: String!): Auth
-    addProduct(name: String!, description: String!, category: String!, itemimage: String!, price: Int!): Product
+    addProduct(name: String!, description: String!, itemimage: String!, price: Int!): Product
     placeOrder(products: [ID]!): Order
     
 
@@ -51,7 +51,7 @@ type Product {
     name: String
     description: String
     price: Int
-    itemimage: String
+    image: String
     category: Category
 
 

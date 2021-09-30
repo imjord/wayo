@@ -3,7 +3,7 @@ import { useMutation } from '@apollo/client';
 import { LOGIN_USER } from '../utils/mutations';
 import Auth from '../utils/auth';
 import { Link } from 'react-router-dom';
-
+import './AllPages.css';
 
 
 function Login(propboi) {
@@ -45,7 +45,7 @@ function Login(propboi) {
        
         <main className='flex-row justify-center mb-4'>
         <div className='col-12 col-md-6'>
-          <div className='card'>
+          <div className='login-page'>
             <h4 className='card-header'>Login</h4>
             <div className='card-body'>
               <form onSubmit={updateFormSubmit}>
