@@ -1,7 +1,8 @@
 const db = require('./connection') // connect to our mondb db file
 const { User, Products, Categories } = require('../models'); // import our models that juan boi made
 
-db.once('open', async () => {
+db.once('open', async () => {  // first time this connection opens it is ran once
+
     await Categories.deleteMany();
     // insert name strings into the categories model using insermany function
     const myCategories = await Categories.insertMany([
@@ -11,7 +12,7 @@ db.once('open', async () => {
         {name: 'Flip-flops'}
     ]);
 
-    console.log('Categories done');
+    console.log('Categories done'); // categories has been inserted 
 
     await Products.deleteMany();
 
@@ -21,15 +22,14 @@ db.once('open', async () => {
             description: 'A flashy wayo tshirt. Very Rare and limited edition.',
             category: myCategories[0]._id,
             price: 15.99,
-            image: 'BLAHBALH.png'
+            image: '.../client/src/assets/images/WAYO_01.PNG'
         },
         {
             name: 'Wayo Hoodie',
             description: 'A totally cool hoodie to keep you fresh and warm. Limited Edition',
             category: myCategories[1]._id,
             price: 25.99,
-            image: 'HOODIE.PNG'
-
+            image: '.../client/src/assets/images/WAYO_HOODIE.PNG'
         },  
         {
             name: 'Wayo Leggings',
@@ -90,8 +90,8 @@ db.once('open', async () => {
     
     ]);
     console.log('products doine')
-    
 
+// do np,m run seeds
 
     process.exit();
 

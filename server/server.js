@@ -32,7 +32,7 @@ startServer(); // start apollo server boi
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
-// serve up static assets 
+// serve up static assets for heroku i think will need later
 // if (process.env.NODE_ENV === 'production') {
 //     app.use(express.static(path.join(__dirname, '../client/build')));
 //   }
