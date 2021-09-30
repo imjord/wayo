@@ -12,6 +12,7 @@ type Query {
     users: [User]
     user(username: String!): User
     products: [Product]
+    getCategory: [Category]
     product(_id: ID!): Product
 
 
@@ -25,6 +26,11 @@ type User{
     items: [Product]
     orderdetails: [Order!]!
 
+}
+
+type Category {
+    _id: ID
+    name: String!
 }
 
 type Mutation {
@@ -46,6 +52,7 @@ type Product {
     description: String
     price: Int
     image: String
+    category: Category
 
 
 }

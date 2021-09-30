@@ -1,12 +1,5 @@
 import { useReducer } from "react";
-import {
-    UPDATE_PRODUCTS,
-    ADD_TO_CART,
-    UPDATE_CART_QUANTITY,
-    REMOVE_FROM_CART,
-    ADD_MULTIPLE_TO_CART,
-    CLEAR_CART,
-    TOGGLE_CART
+import { UPDATE_PRODUCTS, ADD_TO_CART, UPDATE_CART_QUANTITY, REMOVE_FROM_CART, ADD_MULTIPLE_TO_CART, CLEAR_CART, TOGGLE_CART
 } from "./action";
 
 // reducers
