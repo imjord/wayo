@@ -1,3 +1,4 @@
+
 import React, { useEffect } from 'react';
 import { loadStripe } from "@stripe/stripe-js";
 import { QUERY_CHECKOUT } from "../../utils/queries";
@@ -26,6 +27,7 @@ const useStyles = makeStyles((theme) =>
 );
 
 const stripePromise = loadStripe('stripe_testtest_jksdfklsj');
+
 
 const Cart = () => {
     const classes = useStyles();
