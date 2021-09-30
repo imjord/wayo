@@ -90,7 +90,9 @@ db.once('open', async () => {  // first time this connection opens it is ran onc
     
     ]);
     console.log('products doine')
+
 // do np,m run seeds
+
     process.exit();
 
 })

@@ -1,13 +1,30 @@
 import React, { useState } from 'react';
 import { useMutation } from '@apollo/client';
+import { Button, makeStyles, createStyles } from '@material-ui/core';
 import { LOGIN_USER } from '../utils/mutations';
 import Auth from '../utils/auth';
 import { Link } from 'react-router-dom';
 import './AllPages.css';
+import { padding } from '@mui/system';
 
+
+const useStyles = makeStyles((theme) => 
+  createStyles({
+    submitBtn: {
+      alignContent:"center",
+      justifyContent: 'center',
+      width: '50%',
+      marginLeft: '10%',
+      marginTop: '10px',
+      padding: '4'
+    }
+
+  }))
 
 function Login(propboi) {
-    const [formState, setFormState] = useState({ email: '' , password: ''});
+
+  const classes = useStyles();
+  const [formState, setFormState] = useState({ email: '' , password: ''});
 
     // update state based on form input changes
   const updateChange = (event) => {
@@ -44,9 +61,10 @@ function Login(propboi) {
       return(
        
         <main className='flex-row justify-center mb-4'>
-        <div className='col-12 col-md-6'>
+        <div className='login-card'>
+        <h4 className='card-header nes-text is-primary'>Login</h4>
           <div className='login-page'>
-            <h4 className='card-header'>Login</h4>
+            
             <div className='card-body'>
               <form onSubmit={updateFormSubmit}>
                 <input
@@ -67,11 +85,16 @@ function Login(propboi) {
                   value={formState.password}
                   onChange={updateChange}
                 />
-                <button className='btn d-block w-100' type='submit'>
-                  Submit
-                </button>
-                <Link to="/signup">Not a member? Signup!</Link>
+
+                  <Button 
+                    type='submit'
+                    variant="outlined"
+                    className={classes.submitBtn}
+                  >
+                    Enter
+                  </Button>
               </form>
+              <Link to="/signup" className="signUpLink">Not a member? Signup!</Link>
               {error && <div className="nes-text is-error">Login failed</div>}
   
             </div>

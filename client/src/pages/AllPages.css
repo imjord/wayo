@@ -1,0 +1,40 @@
+.login-page {
+    background-size: cover;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start;
+    background-attachment: fixed;
+    background-position: 80%; 
+}
+
+.signUpContainer {
+    border: 1px solid gray;
+}
+
+.form-input {
+    align-items: center;
+    justify-content:center;
+    flex-wrap: wrap;
+    width: 75%;
+    margin-left:10%;
+    margin-top: 4px;
+}
+
+.card-header {
+    text-align: center;
+    font-family: Helvetica Neue;
+    font-size: larger;
+}
+
+.login-card {
+    justify-content: center;
+    margin-bottom: 30vh;
+
+}
+
+.signUpLink {
+    margin-left: 10%;
+    font-weight: 200;
+    
+}

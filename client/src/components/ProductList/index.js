@@ -1,11 +1,13 @@
 import React, { useEffect } from "react";
 import ProductItem from "../ProductItem";
 import { useStoreContext } from "../../utils/GlobalState";
-import { UPDATE_PRODUCTS } from "../../utils/action";
-import { QUERY_PRODUCTS } from "../../utils/queries";
 import { idbPromise } from "../../utils/helpers";
 import { useQuery } from '@apollo/react-hooks';
+import { UPDATE_PRODUCTS } from "../../utils/action";
+import { QUERY_PRODUCTS } from "../../utils/queries";
 import giphy from '../../assets/giphy.gif';
+
+import './ProductList.css';
 
 
 function ProductList() {
@@ -42,8 +44,8 @@ function ProductList() {
     }
 
     return (
-        <div className="my-2">
-        <h2>Our Products:</h2>
+        <div>
+        <h3 className="shopTitle">Products:</h3>
         {state.products.length ? (
             <div className="flex-row">
                 {filterProducts().map(product => (
@@ -57,7 +59,7 @@ function ProductList() {
                 ))}
             </div>
         ) : (
-            <h3>You haven't added any products yet!</h3>
+            <h4 className="emptyPage">Hmmm Looks a bit empty in here.</h4>
         )}
         { loading ? 
         <img src={giphy} alt="loading" />: null}
