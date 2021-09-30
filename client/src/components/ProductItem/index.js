@@ -13,7 +13,6 @@ function ProductItem(item) {
         name,
         _id,
         price,
-        quantity
     } = item;
 
     const { cart } = state
@@ -24,18 +23,16 @@ function ProductItem(item) {
         dispatch({
             type: UPDATE_CART_QUANTITY,
             _id: _id,
-            purchaseQuantity: parseInt(itemInCart.purchaseQuantity) + 1
         });
         idbPromise('cart', 'put', {
             ...itemInCart,
-            purchaseQuantity: parseInt(itemInCart.purchaseQuantity) + 1
         });
         } else {
         dispatch({
             type: ADD_TO_CART,
-            product: { ...item, purchaseQuantity: 1 }
+            products: { ...item}
         });
-        idbPromise('cart', 'put', { ...item, purchaseQuantity: 1 });
+        idbPromise('cart', 'put', { ...item});
         }
     }
 
@@ -49,10 +46,9 @@ function ProductItem(item) {
             <p>{name}</p>
         </Link>
         <div>
-            <div>{quantity} {pluralize("item", quantity)} in stock</div>
             <span>${price}</span>
         </div>
-        <button onClick={addToCart}>Add to cart</button>
+        <button onClick={addToCart}>Add to Bag</button>
         </div>
     );
 }

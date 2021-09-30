@@ -90,6 +90,7 @@ db.once('open', async () => {
     
     ]);
     console.log('products doine')
+    
 
 
     process.exit();

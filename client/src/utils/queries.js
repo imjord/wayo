@@ -35,6 +35,15 @@ export const QUERY_ME = gql `
     }
 }` 
 
+export const QUERY_CATEGORIES = gql `
+    {
+        categories {
+            _id
+            name
+        }
+    }
+`;
+
 export const QUERY_ALL_PRODUCTS = gql `
     {
         products {
@@ -45,7 +54,7 @@ export const QUERY_ALL_PRODUCTS = gql `
             quantity
         }
     }
-`
+`;
 
 export const QUERY_PRODUCTS = gql `
     {
