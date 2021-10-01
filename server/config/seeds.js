@@ -3,17 +3,19 @@ const { User, Products, Categories } = require('../models'); // import our model
 
 db.once('open', async () => {  // first time this connection opens it is ran once
 
-    await Categories.deleteMany();
+    await Categories.deleteMany(); // stop from dups happening
     // insert name strings into the categories model using insermany function
     const myCategories = await Categories.insertMany([
         {name: 'T-Shirts'},
         {name: 'Hoodies'},
         {name: 'Leggings'},
         {name: 'Flip-flops'}
+
+        
     ]);
 
+    
     console.log('Categories done'); // categories has been inserted 
-
     await Products.deleteMany();
 
     const myProducts = await Products.insertMany([
@@ -22,7 +24,7 @@ db.once('open', async () => {  // first time this connection opens it is ran onc
             description: 'A flashy wayo tshirt. Very Rare and limited edition.',
             category: myCategories[0]._id,
             price: 15.99,
-            image: '.../client/src/assets/images/WAYO_01.PNG'
+            image: './assets/images/WAYO_01.PNG'
         },
         {
             name: 'Wayo Hoodie',
@@ -93,6 +95,6 @@ db.once('open', async () => {  // first time this connection opens it is ran onc
 
 // do np,m run seeds
 
-    process.exit();
+    process.exit(); // exit out of the npm seed 
 
 })
