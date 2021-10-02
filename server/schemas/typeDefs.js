@@ -24,7 +24,7 @@ type User{
     email: String  
     password: String
     items: [Product]
-    orderdetails: [Order!]!
+    orderdetails: [Order]
 
 }
 
@@ -50,7 +50,7 @@ type Product {
     _id: ID
     name: String
     description: String
-    price: Int
+    price: Float
     image: String
     category: Category
 
@@ -61,6 +61,10 @@ type Order {
     products: [Product]
     purchasedby: User!
     
+}
+
+type Checkout {
+    session: ID
 }
 
 `;

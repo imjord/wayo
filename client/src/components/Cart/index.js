@@ -86,7 +86,7 @@ const Cart = () => {
     if (!state.cartOpen) {
         return (
             <div onClick={toggleCart}>
-                <span>Trash</span>
+                <span>Check Bag</span>
             </div>
         )
     }
@@ -116,7 +116,7 @@ const Cart = () => {
                 </div>
             ) : (
                 <h3>
-                No items currently in cart.
+                No items in your bag.
                 </h3>
             )}
         </div>

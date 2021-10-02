@@ -20,8 +20,8 @@ const resolvers = {
             return Products.find();
         },
         // get a product by its title
-        product: async (parent, { title }) => {
-            return Products.findOne({ title })
+        product: async (parent, { name }) => {
+            return Products.findOne({ name })
         }
         
     },
