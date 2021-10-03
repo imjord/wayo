@@ -17,6 +17,7 @@ function ProductList() {
 
     useEffect(() => {
         if(data) {
+            console.log(data)
             dispatch({
                 type: UPDATE_PRODUCTS,
                 products: data.products
@@ -24,6 +25,7 @@ function ProductList() {
             data.products.forEach((product) => {
                 idbPromise('products', 'put', product);
             });
+            
         } else if (!loading) {
             idbPromise('products', 'get').then((products) => {
                 dispatch({
@@ -37,16 +39,16 @@ function ProductList() {
   // filter displayed products
     function filterProducts() {
         if (!currentCategory) {
-        return state.products;
+        return data.products;
         }
-
-        return state.products.filter(product => product.category._id === currentCategory);
+        console.log("hello its here" + data.products);
+        return data.products.filter(product => product.category._id === currentCategory);
     }
 
     return (
         <div>
         <h3 className="shopTitle">Products:</h3>
-        {state.products.length ? (
+        {data.products.length ? (
             <div className="flex-row">
                 {filterProducts().map(product => (
                     <ProductItem
