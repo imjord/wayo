@@ -56,7 +56,6 @@ const Cart = () => {
     
     // Get cart from state
     useEffect(() => {
-        console.log(state.cart.length);
         async function getCart() {
             const cart = await idbPromise('cart', 'getCart');
             console.log("cart", cart);
@@ -64,7 +63,6 @@ const Cart = () => {
         };
 
         if (state.cart.length === 0) {
-            console.log("this works");
             getCart();
         }
     }, [state.cart.length, dispatch]);
@@ -93,10 +91,10 @@ const Cart = () => {
         Checkout({
             variables: {products: productIds}
         });
-        console.log("product Ids", productIds);
+        // console.log("product Ids", productIds);
     }
 
-    console.log('item', state)
+    // console.log('item', state)
     return (
         <div>
             <h2 className={classes.cartTitle}>Your Bag</h2>

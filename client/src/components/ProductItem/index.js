@@ -56,7 +56,7 @@ function ProductItem(item) {
     const { _id, image, name, price, description
     } = item;
 
-    console.log("id", _id);
+    // console.log("id", _id);
 
     const { cart } = state
 
