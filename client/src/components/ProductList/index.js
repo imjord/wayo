@@ -9,15 +9,31 @@ import giphy from '../../assets/giphy.gif';
 
 import './ProductList.css';
 
+import { Grid, Cards, CardMedia, CardAction, Button, makeStyles, createStyles } from '@material-ui/core';
+
+
+const useStyles = makeStyles(() => 
+    createStyles({
+        productCard: {
+            maxWidth: "100%",
+            justifyContent: "center",
+        },
+        CardContainer: {
+            justifyContent: "center",
+        },
+    })
+);
 
 function ProductList() {
+    const classes = useStyles();
+
     const [state, dispatch] = useStoreContext();
-    const { currentCategory } = state;
+    const { currentProduct } = state;
     const { loading, data } = useQuery(QUERY_PRODUCTS);
 
     useEffect(() => {
         if(data) {
-            console.log(data)
+          
             dispatch({
                 type: UPDATE_PRODUCTS,
                 products: data.products
@@ -38,34 +54,31 @@ function ProductList() {
 
   // filter displayed products
     function filterProducts() {
-        if (!currentCategory) {
-        return data.products;
-        }
-        console.log("hello its here" + data.products);
-        return data.products.filter(product => product.category._id === currentCategory);
+        return data.products.filter(product => product._id !== currentProduct);
     }
 
     return (
-        <div>
-        <h3 className="shopTitle">Products:</h3>
-        {data.products.length ? (
-            <div className="flex-row">
-                {filterProducts().map(product => (
-                    <ProductItem
-                    key= {product._id}
-                    _id={product._id}
-                    image={product.image}
-                    name={product.name}
-                    price={product.price}
-                    />
-                ))}
-            </div>
-        ) : (
-            <h4 className="emptyPage">Hmmm Looks a bit empty in here.</h4>
-        )}
-        { loading ? 
-        <img src={giphy} alt="loading" />: null}
-        </div>
+        <Grid
+            className={classes.productCard}
+        >
+            {data?.products.length ? (
+                <div className={classes.CardContainer}>
+                    {filterProducts().map(product => (
+                        <ProductItem
+                        key= {product._id}
+                        _id={product._id}
+                        image={product.image}
+                        name={product.name}
+                        price={product.price}
+                        />
+                    ))}
+                </div>
+            ) : (
+                <h4 className="emptyPage">Hmmm Looks a bit empty in here.</h4>
+            )}
+            { loading ? 
+            <img src={giphy} alt="loading" />: null}
+        </Grid>
     );
 }
 

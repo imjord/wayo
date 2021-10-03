@@ -45,25 +45,25 @@ const Cart = () => {
     }, [data]);
     
     useEffect(() => {
+        console.log(state.cart.length);
         async function getCart() {
             const cart = await idbPromise('cart', 'getCart');
+            console.log("cart", cart);
             dispatch({ type: ADD_MULTIPLE_TO_CART, products: [...cart]});
         };
 
-        if (!state.cart.length) {
+        if (state.cart.length === 0) {
+            console.log("this works");
             getCart();
         }
     }, [state.cart.length, dispatch]);
 
-    function toggleCart() {
-        dispatch({ type: TOGGLE_CART })
-    }
 
     // calculate total function
     function cartTotal() {
         let sum = 0;
         state.cart.forEach(item => {
-            sum += item.price * item.purchaseQuantity;
+            sum += item.price * item.purchaseProducts;
         });
         return sum.toFixed(2);
     }
@@ -73,7 +73,7 @@ const Cart = () => {
         const productIds = [];
 
         state.cart.forEach((item) => {
-            for (let i = 0; i < item.purchaseQuantity; i++) {
+            for (let i = 0; i < item.purchaseProducts; i++) {
                 productIds.push(item._id);
             }
         });
@@ -83,21 +83,13 @@ const Cart = () => {
         });
     }
 
-    if (!state.cartOpen) {
-        return (
-            <div onClick={toggleCart}>
-                <span>Check Bag</span>
-            </div>
-        )
-    }
-
+    console.log('item', state)
     return (
         <div>
-            <div onClick={toggleCart}>[close]</div>
             <h2>Cart</h2>
-            {state.cart.length ? (
+            {state?.cart.length ? (
                 <div>
-                    {state.cart.map(item => (
+                    {state?.cart.map(item => (
                         <CartItem key={item._id} item={item} />
                     ))}
 

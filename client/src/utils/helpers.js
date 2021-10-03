@@ -1,10 +1,3 @@
-// pluralize helper
-export function pluralize(name, count) {
-    if (count === 1) {
-      return name;
-    }
-    return name + 's';
-}
 
 // idbPromise helper function
 export function idbPromise(storeName, method, object) {
@@ -50,10 +43,11 @@ export function idbPromise(storeName, method, object) {
                     store.delete(object._id);
                     break;
                 default:
-                    console.log('No valid method');
+                    console.log('Not valid');
                     break;
             }
-  
+            
+            // on complete run function database.close()
             tx.oncomplete = function() {
                 db.close();
             };

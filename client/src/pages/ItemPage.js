@@ -20,7 +20,7 @@ const useStyles = makeStyles(() => {
 })
 
 // function for cart products
-function CartDetail() {
+function ItemPage() {
     const [state, dispatch] = useStoreContext();
     const { id } = useParams();
     const [currentProducts, setCurrentProducts] = useState({});
@@ -45,10 +45,10 @@ function CartDetail() {
         }
         // loading cache idb helper
         else if (!loading) {
-            idbPromise('products', 'get').then((indProducts) => {
+            idbPromise('products', 'get').then((indxProducts) => {
                 dispatch({
                 type: UPDATE_PRODUCTS,
-                products: indProducts
+                products: indxProducts
                 });
             });
         }
@@ -89,15 +89,45 @@ function CartDetail() {
     };
 
   return (
-    <Card 
-        JustifyContent="Center"
-    >
-        <Link to="/products">
+    <>
+      {currentProducts && cart ? (
+        <Card 
+            JustifyContent="Center"
+            >
+          <Link to="/products">
             Continue Shopping
-        </Link>
-        <Cart />
-    </Card>
-  )
+          </Link>
+          <h2>{currentProducts.name}</h2>
+          <p>
+            {currentProducts.description}
+          </p>
+
+          <p>
+            <strong>Price:</strong>
+            ${currentProducts.price}
+            {" "}
+            <button onClick={addToCart}>
+              Add to Bag
+            </button>
+            <button 
+              disabled={!cart.find(product => product._id === currentProducts._id)} 
+              onClick={removeFromCart}
+            >
+              Remove from Bag
+            </button>
+          </p>
+
+          <img
+            src={`/images/${currentProducts.image}`}
+            alt={currentProducts.name}
+          />
+        </Card>
+      ) : null}
+      {
+        loading ? <img src={giphy} alt="loading" /> : null
+      }
+    </>
+  );
 };
 
-export default CartDetail;
+export default ItemPage;
