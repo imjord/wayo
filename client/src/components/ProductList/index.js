@@ -9,7 +9,7 @@ import giphy from '../../assets/giphy.gif';
 
 import './ProductList.css';
 
-import { Grid, Cards, CardMedia, CardAction, Button, makeStyles, createStyles } from '@material-ui/core';
+import { Grid, makeStyles, createStyles } from '@material-ui/core';
 
 
 const useStyles = makeStyles(() => 

@@ -5,9 +5,9 @@ import { QUERY_CHECKOUT } from "../../utils/queries";
 import { idbPromise } from "../../utils/helpers";
 import { useLazyQuery } from "@apollo/react-hooks";
 
-import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 
-import { TOGGLE_CART, ADD_MULTIPLE_TO_CART } from "../../utils/action";
+
+import { ADD_MULTIPLE_TO_CART } from "../../utils/action";
 
 import { useStoreContext } from '../../utils/GlobalState';
 import CartItem from '../CartItem';

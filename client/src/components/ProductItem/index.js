@@ -5,7 +5,8 @@ import { ADD_TO_CART, UPDATE_CART_QUANTITY } from "../../utils/action";
 import { idbPromise } from "../../utils/helpers";
 import './ProductItem.css';
 
-import { Card, CardContent, createStyles, makeStyles, Grid, Button, CardActionArea, CardMedia } from '@material-ui/core';
+import { Card, CardContent, createStyles, makeStyles, Grid, Button, CardActionArea } from '@material-ui/core';
+
 
 const useStyles = makeStyles(() => 
     createStyles({
@@ -16,7 +17,8 @@ const useStyles = makeStyles(() =>
         gridContainer: {
             display: 'flex',
             maxWidth: "400px",
-            maxHeight: "500px"
+            maxHeight: "500px",
+            margin: "0 auto",
     
         },
         productCard: {
@@ -36,7 +38,8 @@ const useStyles = makeStyles(() =>
             justifyItems: "center",
         },
         cardMedia: {
-
+            maxWidth: "100%",
+            borderBottom: "1px solid"
         },
         cardAction: {
             textAlign: "center"
@@ -90,7 +93,7 @@ function ProductItem(item) {
                         
                         <Link to={`/products/${_id}`}>
                             <img
-                            className="cardMedia"
+                            className={classes.cardMedia}
                             alt={name}
                             src={`assets/images/${image}`}
                             /> 
