@@ -56,6 +56,8 @@ function ProductItem(item) {
     const { _id, image, name, price, description
     } = item;
 
+    console.log("id", _id);
+
     const { cart } = state
 
     const addToCart = () => {
@@ -64,9 +66,11 @@ function ProductItem(item) {
         dispatch({
             type: UPDATE_CART_QUANTITY,
             _id: _id,
+            purchaseQuantity: parseInt(itemInCart.purchaseQuantity) + 1
         });
         idbPromise('cart', 'put', {
             ...itemInCart,
+            purchaseQuantity: parseInt(itemInCart.purchaseQuantity) + 1
         });
         } else {
         dispatch({

@@ -24,9 +24,7 @@ import './Cart.css';
 // material ui styling
 const useStyles = makeStyles((theme) => 
     createStyles({
-        linkButton: {
-
-        },
+    
         cartTitle: {
             textAlign: 'center',
             marginBottom: "2%"
@@ -83,6 +81,7 @@ const Cart = () => {
 
     // checkout submit function
     function submitCheckout() {
+      
         const productIds = [];
 
         state.cart.forEach((item) => {
@@ -94,6 +93,7 @@ const Cart = () => {
         Checkout({
             variables: {products: productIds}
         });
+        console.log("product Ids", productIds);
     }
 
     console.log('item', state)
