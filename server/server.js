@@ -26,13 +26,14 @@ async function startServer() {
     await server.start();
     server.applyMiddleware({ app })
 }
-startServer(); // start apollo server boi
+startServer(); // start apollo server boiklopj
 
 
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
 // // Serve up static assets
+
 app.use('/images', express.static(path.join(__dirname, '../client/images')));
 
 if (process.env.NODE_ENV === 'production') {
