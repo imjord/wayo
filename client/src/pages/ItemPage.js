@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useQuery } from '@apollo/react-hooks';
 import { Link, useParams } from "react-router-dom";
-import Cart from "../components/Cart";
+
 import { useStoreContext } from "../utils/GlobalState";
 import { QUERY_PRODUCTS } from "../utils/queries";
 import { idbPromise } from "../utils/helpers";
@@ -11,13 +11,33 @@ import giphy from '../assets/giphy.gif';
 import { Grid, Card, makeStyles, createStyles, Button } from '@material-ui/core';
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 
+
 const useStyles = makeStyles(() => 
     createStyles({
         itemPageContainer: {
-
+            maxWidth: "100%",
+            marginBottom: "40%"
+        },
+        cardContainer: {
+            justifyContent: "center",
+            textAlign: "center",
+            maxWidth: "100%",
+            margin: "0 0 0 20%",
+            maxHeight: "400"
+        },
+        itemPageCard: {
+            maxWidth: "80%",
+            alignContent: "center"
         },
         cardPrice: {
-
+            textAlign: "left",
+            marginLeft: "10%"
+        },
+        backArrow: {
+            textAlign: 'left',
+        },
+        itemBtn: {
+            marginInline: '1%'
         }
     })
 );
@@ -100,38 +120,51 @@ function ItemPage() {
         <Grid
             className={classes.itemPageContainer}
         >
-            <Card 
-                JustifyContent="Center"
-
-                >
             <Link to="/products">
-                <ArrowBackIosNewIcon />
+                <ArrowBackIosNewIcon 
+                className={classes.backArrow}/>
             </Link>
-            <h2>{currentProducts.name}</h2>
-            <p>
-                {currentProducts.description}
-            </p>
+            <div className={classes.cardContainer}>
+                <Card 
+                    JustifyContent="Center"
+                    className={classes.itemPageCard}
 
-            <p>
-                <h3 className={classes.cardPrice}>Price:</h3>
-                ${currentProducts.price}
-                {" "}
-                <button onClick={addToCart}>
-                Add to Bag
-                </button>
-                <button 
-                disabled={!cart.find(product => product._id === currentProducts._id)} 
-                onClick={removeFromCart}
                 >
-                Remove from Bag
-                </button>
-            </p>
+                    
+                    <img
+                        src={`/images/${currentProducts.image}`}
+                        alt={currentProducts.name}
+                    />
+                    
+                    <h2>{currentProducts.name}</h2>
+                    <p>
+                        {currentProducts.description}
+                    </p>
 
-            <img
-                src={`/images/${currentProducts.image}`}
-                alt={currentProducts.name}
-            />
-            </Card>
+                    <p>
+                        <h3 className={classes.cardPrice}>Price: ${currentProducts.price}</h3>
+                       
+                        {" "}
+                        <Button 
+                        size="small"
+                        className={classes.itemBtn}
+                        variant="outlined"
+                        onClick={addToCart}>
+                        Add to Bag
+                        </Button>
+                        <Button 
+                        size="small"
+                        className={classes.itemBtn}
+                        variant="outlined"
+                        disabled={!cart.find(product => product._id === currentProducts._id)} 
+                        onClick={removeFromCart}
+                        >
+                        Remove 
+                        </Button>
+                    </p>
+
+                </Card>
+            </div>
         </Grid>
       ) : null}
       {

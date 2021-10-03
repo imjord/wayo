@@ -1,3 +1,4 @@
 .cardMedia {
-    
+    display: flex;
+    object-fit: cover;
 }

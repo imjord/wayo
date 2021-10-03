@@ -1,7 +1,6 @@
 import React from 'react';
 import { makeStyles, createStyles, Grid } from '@material-ui/core'
-import { work } from '@material-ui/icons';
-import indigo from '@material-ui/core/colors/indigo';
+
 
 import "./Footer.css";
 
