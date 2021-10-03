@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import Auth from '../../utils/auth';
 import PersonIcon from '@mui/icons-material/Person';
@@ -9,8 +9,6 @@ import ShopIcon from '@mui/icons-material/Shop';
 import './Nav.css';
 
 function Nav() {
-    const [sidebar, setSidebar] = useState(false);
-    const showSidebar = () => setSidebar(!sidebar);
 
     const logout = event => {
         event.preventDefault();

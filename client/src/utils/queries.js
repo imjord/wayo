@@ -24,25 +24,9 @@ export const QUERY_ME = gql `
             description
             image
         }
-        orderdetails{
-            _id
-            purchasedby {
-                _id
-                username
-            }
-        }
-
     }
 }` 
 
-export const QUERY_CATEGORIES = gql `
-    {
-        categories {
-            _id
-            name
-        }
-    }
-`;
 
 export const QUERY_ALL_PRODUCTS = gql `
     {
@@ -51,11 +35,11 @@ export const QUERY_ALL_PRODUCTS = gql `
             name
             description
             price
-            quantity
         }
     }
 `;
 
+// Products to return
 export const QUERY_PRODUCTS = gql `
     {
         products {

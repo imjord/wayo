@@ -11,12 +11,20 @@ import {
     ADD_TO_CART,
     UPDATE_PRODUCTS,
 } from "../utils/action";
-import giphy from '../assets/giphy.gif';
 
+
+import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
+import { Grid, Card, makeStyles, createStyles, Button } from '@material-ui/core';
+
+const useStyles = makeStyles(() => {
+
+})
+
+// function for cart products
 function CartDetail() {
     const [state, dispatch] = useStoreContext();
     const { id } = useParams();
-    const [currentProduct, setCurrentProduct] = useState({});
+    const [currentProducts, setCurrentProducts] = useState({});
     const { loading, data } = useQuery(QUERY_PRODUCTS);
 
     const { products, cart } = state;
@@ -24,7 +32,7 @@ function CartDetail() {
     // react effect function
     useEffect(() => {
         if (products.length) {
-            setCurrentProduct(products.find(product => product._id === id));
+            setCurrentProducts(products.find(product => product._id === id));
         } 
         else if (data) {
             dispatch({
@@ -38,14 +46,25 @@ function CartDetail() {
         }
         // loading cache idb helper
         else if (!loading) {
-            idbPromise('products', 'get').then((indexedProducts) => {
+            idbPromise('products', 'get').then((indProducts) => {
                 dispatch({
                 type: UPDATE_PRODUCTS,
-                products: indexedProducts
+                products: indProducts
                 });
             });
         }
     }, [products, data, loading, dispatch, id]);
+
+    
+    // remove from cart function
+    const removeFromCart = () => {
+        dispatch({
+        type: REMOVE_FROM_CART,
+        _id: currentProducts._id
+        });
+
+        idbPromise('cart', 'delete', { ...currentProducts });
+    };
 
     // add to cart function
     const addToCart = () => {
@@ -54,71 +73,32 @@ function CartDetail() {
             dispatch({
                 type: UPDATE_CART_QUANTITY,
                 _id: id,
-                purchaseQuantity: parseInt(itemInCart.purchaseQuantity) + 1
+                purchaseProducts: parseInt(itemInCart.purchaseProducts) + 1
             });
         idbPromise('cart', 'put', {
             ...itemInCart,
-            purchaseQuantity: parseInt(itemInCart.purchaseQuantity) + 1
+            purchaseProducts: parseInt(itemInCart.purchaseProducts) + 1
         });
         } else {
             dispatch({
                 type: ADD_TO_CART,
-                product: { ...currentProduct, purchaseQuantity: 1 }
+                product: { ...currentProducts, purchaseProducts: 1 }
             });
-            idbPromise('cart', 'put', { ...currentProduct, purchaseQuantity: 1 });
+            idbPromise('cart', 'put', { ...currentProducts, purchaseProducts: 1 });
 
         }
     };
 
-    // remove from cart function
-    const removeFromCart = () => {
-        dispatch({
-        type: REMOVE_FROM_CART,
-        _id: currentProduct._id
-        });
-
-        idbPromise('cart', 'delete', { ...currentProduct });
-  };
-
   return (
-    <>
-      {currentProduct && cart ? (
-        <div className="container my-1">
-          <Link to="/products">
-            Continue Shopping
-          </Link>
-          <h2>{currentProduct.name}</h2>
-          <p>
-            {currentProduct.description}
-          </p>
-
-          <p>
-            <strong>Price:</strong>
-            ${currentProduct.price}
-            {" "}
-            <button onClick={addToCart}>
-              Add to Bag
-            </button>
-            <button 
-              disabled={!cart.find(p => p._id === currentProduct._id)} 
-              onClick={removeFromCart}
-            >
-              Remove from Bag
-            </button>
-          </p>
-
-          <img
-            src={`/images/${currentProduct.image}`}
-            alt={currentProduct.name}
-          />
-        </div>
-      ) : null}
-      {
-        loading ? <img src={giphy} alt="loading" /> : null
-      }
-      <Cart />
-    </>
-  );
+    <Card 
+        JustifyContent="Center"
+    >
+        <Link to="/products">
+            <ArrowBackIosNewIcon />
+        </Link>
+        <Cart />
+    </Card>
+  )
 };
 
 export default CartDetail;
