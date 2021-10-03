@@ -4,8 +4,7 @@ const { Schema } = mongoose;
 
 
 var productsSchema = new Schema(
-{   
-    name: {
+    {   name: {
         type: String,
         required: true,
         unique: true,
@@ -22,15 +21,11 @@ var productsSchema = new Schema(
     image: {
         type: String
     },
-    category: {
-        type: Schema.Types.ObjectId,
-        ref: 'Category',
-        required: true
-    }
+
 },
 );
 
 const Products = mongoose.model('Products', productsSchema)
 
-module.exports = Products;
+module.exports= Products;
 

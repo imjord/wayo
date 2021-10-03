@@ -1,7 +1,8 @@
 import React from 'react';
-import { IconContext } from 'react-icons'
+
 import { useStoreContext } from "../../utils/GlobalState";
 import { REMOVE_FROM_CART, UPDATE_CART_QUANTITY } from "../../utils/action";
+import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import { idbPromise } from "../../utils/helpers";
 
 const CartItem = ({ item }) => {
@@ -18,6 +19,7 @@ const CartItem = ({ item }) => {
   };
 
   const onChange = (e) => {
+
     const value = e.target.value;
     if (value === '0') {
       dispatch({
@@ -30,15 +32,15 @@ const CartItem = ({ item }) => {
       dispatch({
         type: UPDATE_CART_QUANTITY,
         _id: item._id,
-        purchaseQuantity: parseInt(value)
+        purchaseProducts: parseInt(value)
       });
-      idbPromise('cart', 'put', { ...item, purchaseQuantity: parseInt(value) });
-
+      idbPromise('cart', 'put', { ...item, purchaseProducts: parseInt(value) });
+      console.log("value", value);
     }
   }
 
   return (
-    <div className="flex-row">
+    <div>
       <div>
         <img
           src={`/images/${item.image}`}
@@ -52,15 +54,15 @@ const CartItem = ({ item }) => {
           <input
             type="number"
             placeholder="1"
-            value={item.purchaseQuantity}
+            value={item.purchaseProducts}
             onChange={onChange}
           />
           <span
             role="img"
-            aria-label="trash"
+            aria-label="remove"
             onClick={() => removeFromCart(item)}
           >
-            Remove
+            <DeleteForeverIcon />
           </span>
         </div>
       </div>
