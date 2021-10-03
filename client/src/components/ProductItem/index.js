@@ -1,18 +1,56 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { pluralize } from "../../utils/helpers"
 import { useStoreContext } from "../../utils/GlobalState";
 import { ADD_TO_CART, UPDATE_CART_QUANTITY } from "../../utils/action";
 import { idbPromise } from "../../utils/helpers";
+import './ProductItem.css';
 
+import { Card, CardContent, createStyles, makeStyles, Grid, Button, CardActionArea, CardMedia } from '@material-ui/core';
+
+const useStyles = makeStyles(() => 
+    createStyles({
+
+        pageCopntainer: {
+
+        },
+        gridContainer: {
+            display: 'flex',
+            maxWidth: "400px",
+            maxHeight: "500px"
+    
+        },
+        productCard: {
+            padding: "1",
+            maxWidth: "40%",
+            maxHeight: "35vh",
+            justifyContent: "center",
+            margin: "2%",
+        },
+        cardHeader: {
+            fontSize: "10px",
+        },
+        cardContent: {
+
+        },
+        cardPrice: {
+            justifyItems: "center",
+        },
+        cardMedia: {
+
+        },
+        cardAction: {
+            textAlign: "center"
+        },
+    })
+);
+
+// function for individual item
 function ProductItem(item) {
+
+    const classes = useStyles();
     const [state, dispatch] = useStoreContext();
 
-    const {
-        image,
-        name,
-        _id,
-        price,
+    const { _id, image, name, price, description
     } = item;
 
     const { cart } = state
@@ -36,19 +74,42 @@ function ProductItem(item) {
         }
     }
 
+    // Card for each product
     return (
-        <div className="card px-1 py-1">
-        <Link to={`/products/${_id}`}>
-            <img
-            alt={name}
-            src={`/images/${image}`}
-            />
-            <p>{name}</p>
-        </Link>
-        <div>
-            <span>${price}</span>
-        </div>
-        <button onClick={addToCart}>Add to Bag</button>
+        <div className={classes.pageContainer}>
+            <Grid
+            justifyContent="space-evenly"
+            textAlign="center"
+                className={classes.gridContainer}
+                >   
+                <Card 
+                    className={classes.productCard}
+                >
+                    <CardActionArea
+                        className={classes.cardAction}>
+                        
+                        <Link to={`/products/${_id}`}>
+                            <img
+                            className="cardMedia"
+                            alt={name}
+                            src={`assets/images/${image}`}
+                            /> 
+                        </Link>
+                        <CardContent>
+                            <div className={classes.cardHeader}>{name}</div> 
+                            <div className={classes.cardContent}>{description}</div>
+                            <div>
+                                <span className={classes.cardPrice}>${price}</span>
+                            </div>
+                            <Button
+                                size="small"
+                                variant="outlined" 
+                                onClick={addToCart}
+                                >Add to Bag</Button>
+                        </CardContent>
+                    </CardActionArea>
+                </Card>
+            </Grid>
         </div>
     );
 }
