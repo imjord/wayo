@@ -19,6 +19,7 @@ const CartItem = ({ item }) => {
   };
 
   const onChange = (e) => {
+
     const value = e.target.value;
     if (value === '0') {
       dispatch({
@@ -34,12 +35,12 @@ const CartItem = ({ item }) => {
         purchaseProducts: parseInt(value)
       });
       idbPromise('cart', 'put', { ...item, purchaseProducts: parseInt(value) });
-
+      console.log("value", value);
     }
   }
 
   return (
-    <div className="flex-row">
+    <div>
       <div>
         <img
           src={`/images/${item.image}`}
@@ -58,7 +59,7 @@ const CartItem = ({ item }) => {
           />
           <span
             role="img"
-            aria-label="trash"
+            aria-label="remove"
             onClick={() => removeFromCart(item)}
           >
             <DeleteForeverIcon />
