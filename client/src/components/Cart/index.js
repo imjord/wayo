@@ -5,6 +5,8 @@ import { QUERY_CHECKOUT } from "../../utils/queries";
 import { idbPromise } from "../../utils/helpers";
 import { useLazyQuery } from "@apollo/react-hooks";
 
+import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
+
 import { TOGGLE_CART, ADD_MULTIPLE_TO_CART } from "../../utils/action";
 
 import { useStoreContext } from '../../utils/GlobalState';
@@ -22,7 +24,17 @@ import './Cart.css';
 // material ui styling
 const useStyles = makeStyles((theme) => 
     createStyles({
-        linkButton: {}
+        linkButton: {
+
+        },
+        cartTitle: {
+            textAlign: 'center',
+            marginBottom: "2%"
+        },
+        cartEmpty: {
+            textAlign: 'center',
+            marginBottom: "20%"
+        }
     })
 );
 
@@ -44,6 +56,7 @@ const Cart = () => {
         }
     }, [data]);
     
+    // Get cart from state
     useEffect(() => {
         console.log(state.cart.length);
         async function getCart() {
@@ -86,7 +99,7 @@ const Cart = () => {
     console.log('item', state)
     return (
         <div>
-            <h2>Cart</h2>
+            <h2 className={classes.cartTitle}>Your Bag</h2>
             {state?.cart.length ? (
                 <div>
                     {state?.cart.map(item => (
@@ -107,7 +120,7 @@ const Cart = () => {
                     </div>
                 </div>
             ) : (
-                <h3>
+                <h3 className={classes.cartEmpty}>
                 No items in your bag.
                 </h3>
             )}

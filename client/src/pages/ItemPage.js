@@ -5,22 +5,27 @@ import Cart from "../components/Cart";
 import { useStoreContext } from "../utils/GlobalState";
 import { QUERY_PRODUCTS } from "../utils/queries";
 import { idbPromise } from "../utils/helpers";
-import {
-    REMOVE_FROM_CART,
-    UPDATE_CART_QUANTITY,
-    ADD_TO_CART,
-    UPDATE_PRODUCTS,
-} from "../utils/action";
+import { REMOVE_FROM_CART, UPDATE_CART_QUANTITY, ADD_TO_CART, UPDATE_PRODUCTS, } from "../utils/action";
 import giphy from '../assets/giphy.gif';
 
 import { Grid, Card, makeStyles, createStyles, Button } from '@material-ui/core';
+import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 
-const useStyles = makeStyles(() => {
+const useStyles = makeStyles(() => 
+    createStyles({
+        itemPageContainer: {
 
-})
+        },
+        cardPrice: {
+
+        }
+    })
+);
 
 // function for cart products
 function ItemPage() {
+    const classes = useStyles();
+
     const [state, dispatch] = useStoreContext();
     const { id } = useParams();
     const [currentProducts, setCurrentProducts] = useState({});
@@ -31,6 +36,7 @@ function ItemPage() {
     // react effect function
     useEffect(() => {
         if (products.length) {
+
             setCurrentProducts(products.find(product => product._id === id));
         } 
         else if (data) {
@@ -90,38 +96,43 @@ function ItemPage() {
 
   return (
     <>
-      {currentProducts && cart ? (
-        <Card 
-            JustifyContent="Center"
-            >
-          <Link to="/products">
-            Continue Shopping
-          </Link>
-          <h2>{currentProducts.name}</h2>
-          <p>
-            {currentProducts.description}
-          </p>
+      {currentProducts ? (
+        <Grid
+            className={classes.itemPageContainer}
+        >
+            <Card 
+                JustifyContent="Center"
 
-          <p>
-            <strong>Price:</strong>
-            ${currentProducts.price}
-            {" "}
-            <button onClick={addToCart}>
-              Add to Bag
-            </button>
-            <button 
-              disabled={!cart.find(product => product._id === currentProducts._id)} 
-              onClick={removeFromCart}
-            >
-              Remove from Bag
-            </button>
-          </p>
+                >
+            <Link to="/products">
+                <ArrowBackIosNewIcon />
+            </Link>
+            <h2>{currentProducts.name}</h2>
+            <p>
+                {currentProducts.description}
+            </p>
 
-          <img
-            src={`/images/${currentProducts.image}`}
-            alt={currentProducts.name}
-          />
-        </Card>
+            <p>
+                <h3 className={classes.cardPrice}>Price:</h3>
+                ${currentProducts.price}
+                {" "}
+                <button onClick={addToCart}>
+                Add to Bag
+                </button>
+                <button 
+                disabled={!cart.find(product => product._id === currentProducts._id)} 
+                onClick={removeFromCart}
+                >
+                Remove from Bag
+                </button>
+            </p>
+
+            <img
+                src={`/images/${currentProducts.image}`}
+                alt={currentProducts.name}
+            />
+            </Card>
+        </Grid>
       ) : null}
       {
         loading ? <img src={giphy} alt="loading" /> : null

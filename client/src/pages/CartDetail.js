@@ -11,8 +11,9 @@ import {
     ADD_TO_CART,
     UPDATE_PRODUCTS,
 } from "../utils/action";
-import giphy from '../assets/giphy.gif';
 
+
+import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 import { Grid, Card, makeStyles, createStyles, Button } from '@material-ui/core';
 
 const useStyles = makeStyles(() => {
@@ -93,7 +94,7 @@ function CartDetail() {
         JustifyContent="Center"
     >
         <Link to="/products">
-            Continue Shopping
+            <ArrowBackIosNewIcon />
         </Link>
         <Cart />
     </Card>
