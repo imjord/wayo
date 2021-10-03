@@ -1,5 +1,5 @@
 import { useReducer } from "react";
-import { UPDATE_PRODUCTS, ADD_TO_CART, UPDATE_CART_QUANTITY, REMOVE_FROM_CART, ADD_MULTIPLE_TO_CART, CLEAR_CART, TOGGLE_CART
+import { UPDATE_PRODUCTS, ADD_TO_CART,REMOVE_FROM_CART, ADD_MULTIPLE_TO_CART, CLEAR_CART, UPDATE_CART_QUANTITY, TOGGLE_CART
 } from "./action";
 
 // reducers
@@ -18,7 +18,7 @@ export const reducer = (state, action) => {
                 cartOpen:true,
                 cart: state.cart.map(product => {
                     if (action._id === product._id) {
-                        product.purchaseQuantity = action.purchaseQuantity
+                        product.purchaseProducts = action.purchaseProducts
                     }
                     return product;
                 })
@@ -35,7 +35,7 @@ export const reducer = (state, action) => {
                 cartOpen: true,
                 cart: state.cart.map(product => {
                     if (action._id === product._id) {
-                        product.purchaseQuantity = action.purchaseQuantity
+                        product.purchaseProducts = action.purchaseProducts
                     }
                     return product;
                 })
@@ -58,17 +58,12 @@ export const reducer = (state, action) => {
                 cartOpen: newState.length > 0,
                 cart: newState
             };
-        
+        // reducer to remove items in cart
         case CLEAR_CART:
             return {
                 ...state,
                 cartOpen: false,
                 cart: []
-            };
-        case TOGGLE_CART:
-            return {
-                ...state,
-                cartOpen: !state.cartOpen
             };
         default:
             return state;
