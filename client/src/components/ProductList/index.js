@@ -59,20 +59,21 @@ function ProductList() {
 
     return (
         <Grid
+            container
             className={classes.productCard}
         >
             {data?.products.length ? (
-                <div className={classes.CardContainer}>
-                    {filterProducts().map(product => (
-                        <ProductItem
-                        key= {product._id}
-                        _id={product._id}
-                        image={product.image}
-                        name={product.name}
-                        price={product.price}
-                        />
-                    ))}
-                </div>
+               <>
+                {filterProducts().map(product => (
+                    <ProductItem
+                    key= {product._id}
+                    _id={product._id}
+                    image={product.image}
+                    name={product.name}
+                    price={product.price}
+                    />
+                ))}
+                </>
             ) : (
                 <h4 className="emptyPage">Hmmm Looks a bit empty in here.</h4>
             )}

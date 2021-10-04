@@ -83,41 +83,44 @@ function ProductItem(item) {
 
     // Card for each product
     return (
-        <div className={classes.pageContainer}>
-            <Grid
-            justifyContent="space-evenly"
-            textAlign="center"
-                className={classes.gridContainer}
-                >   
-                <Card 
-                    className={classes.productCard}
-                >
-                    <CardActionArea
-                        className={classes.cardAction}>
-                        
-                        <Link to={`/products/${_id}`}>
-                            <img
-                            className={classes.cardMedia}
-                            alt={name}
-                            src={`assets/images/${image}`}
-                            /> 
-                        </Link>
-                        <CardContent>
-                            <div className={classes.cardHeader}>{name}</div> 
-                            <div className={classes.cardContent}>{description}</div>
-                            <div>
-                                <span className={classes.cardPrice}>${price}</span>
-                            </div>
-                            <Button
-                                size="small"
-                                variant="outlined" 
-                                onClick={addToCart}
-                                >Add to Bag</Button>
-                        </CardContent>
-                    </CardActionArea>
-                </Card>
-            </Grid>
-        </div>
+    
+        <Grid
+        item
+        xs={12}
+        sm={4}
+        justifyContent="space-evenly"
+        textAlign="center"
+            className={classes.gridContainer}
+            >   
+            <Card 
+                className={classes.productCard}
+            >
+                <CardActionArea
+                    className={classes.cardAction}>
+                    
+                    <Link to={`/products/${_id}`}>
+                        <img
+                        className={classes.cardMedia}
+                        alt={name}
+                        src={`assets/images/${image}`}
+                        /> 
+                    </Link>
+                    <CardContent>
+                        <div className={classes.cardHeader}>{name}</div> 
+                        <div className={classes.cardContent}>{description}</div>
+                        <div>
+                            <span className={classes.cardPrice}>${price}</span>
+                        </div>
+                        <Button
+                            size="small"
+                            variant="outlined" 
+                            onClick={addToCart}
+                            >Add to Bag</Button>
+                    </CardContent>
+                </CardActionArea>
+            </Card>
+        </Grid>
+
     );
 }
 
