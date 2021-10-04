@@ -4,6 +4,7 @@ const express = require('express');
 const { authMiddleware } = require('./utils/auth');
 
 // import apollo 
+const poop = require('../client/')
 
 const { ApolloServer } = require('apollo-server-express');
 
