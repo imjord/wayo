@@ -25,6 +25,7 @@
   "devDependencies": {
     "concurrently": "^5.1.0"
   },
+  "homepage": "https://github.com/imjord/wayo-clothing-brand-.01#readme",
   "dependencies": {
     "if-env": "^1.0.4"
   }
