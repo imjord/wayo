@@ -44,6 +44,7 @@ app.get('*', (req, res) => {
 });
 
 
+// Database run
 db.once('open', () => {
     app.listen(PORT, () => {
         console.log(`api server running on port ${PORT}! `);
