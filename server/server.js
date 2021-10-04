@@ -1,7 +1,7 @@
 const express = require('express');
 
 // auth 
-const { authMiddleware } = require('./utils/auth');
+// const { authMiddleware } = require('./utils/auth');
 
 // import apollo 
 
@@ -10,7 +10,7 @@ const { ApolloServer } = require('apollo-server-express');
 
 // import schemas
 const { typeDefs, resolvers } = require('./schemas');
-const db = require('./config/connection');
+const db = require('./config/connection.js');
 const path = require('path');
 
 
@@ -29,7 +29,7 @@ async function startServer() {
 }
 startServer(); // start apollo server boiklopj
 
-
+console.log(process.env.MONGODB_URI);
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
