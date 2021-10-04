@@ -52,3 +52,5 @@ db.once('open', () => {
         console.log(`api server running on port ${PORT}! `);
     })
 })
+
+// heroku i hate u from imjord
